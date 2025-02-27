@@ -15,5 +15,11 @@ pipeline {
                 sh "mvn clean package"
             }
         }
+        stage('dockerbuild') {
+            steps {
+                echo 'building image'
+                sh "docket build . -t pavanmahajire/image1:${BUILD_NUMBER}"
+                  }
+                               
     }
 }
