@@ -18,7 +18,7 @@ pipeline {
         stage('dockerbuild') {
             steps {
                 echo 'building image'
-                sh 'docker built . -t pavanmahajire/image1:${BUILD_NUMBER}'
+                sh 'docker build . -t pavanmahajire/image1:${BUILD_NUMBER}'
             }
                                
         }
