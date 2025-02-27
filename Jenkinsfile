@@ -34,8 +34,11 @@ pipeline {
         stage('createcontainer') {
             steps {
                 echo 'create container'
+                sshagent(['sshdocker']) {
                 sh 'ssh -o StrictHostKeyChecking=no ec2-user@172.31.31.152 docker rm -f firstcontainer'
                 sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.31.152 docker run -d -p 8080:8080 --name firstcontainer pavanmahajire/image1:${BUILD_NUMBER}"
+                }
+                
             }                     
         }
     }
